@@ -134,7 +134,7 @@ custom.stopwords <- c(stopwords('english'), "also",'lol', 'smh', 'delta',"will",
 clean.corpus <- function(corpus) {
   corpus <- tm_map(corpus, content_transformer(tryTolower)) #NA
   corpus <- tm_map(corpus, removeWords, custom.stopwords) # stopwords
-  corpus <- tm_map(corpus, removePunctuation) #elimina puntuació
+  corpus <- tm_map(corpus, removePunctuation) #elimina puntuaciÃ³
   corpus <- tm_map(corpus, stripWhitespace) #elimina espais de sobre
   corpus <- tm_map(corpus, removeNumbers) #elimina els numeros
   corpus <- tm_map(corpus,stemDocument) #funcio agrupar paraules eliminar sufixos
@@ -229,7 +229,7 @@ text_m2 <- as.matrix(tdm2)
 dim(text_m2)
 
 #write.csv(colnames(text_m2),"paraules_2.csv")
-################## Recodificació de les praules ######
+################## RecodificaciÃ³ de les praules ######
 term_frequencia <- colSums(text_m2)
 #View(text_m2[,c(41,42,43,44)])
 #View(text_m2[,c(51,52)])
@@ -278,7 +278,7 @@ for (m in 1:3743){
   content(corpus_clean[[m]])<-d
   }
 
-#### Creació de la matriu ####
+#### CreaciÃ³ de la matriu ####
 # Create the document-term matrix from the corpus
 text_dtm_2 <- DocumentTermMatrix(corpus_clean, control = list(weighting = weightTf))
 
@@ -411,7 +411,7 @@ col <- get_ca_col(res.ca)
 
 
 
-###Top  paraules que més  contribueixen  a cada eix
+###Top  paraules que mÃ©s  contribueixen  a cada eix
 contribucio_col <- as.data.frame(col$contrib)
 coord_col <- as.data.frame(col$coord)
 coord_col$names <- rownames(coord_col)
@@ -420,7 +420,7 @@ colnames(contribucio_col) <- c("Dim 1_con","Dim 2_con","Dim 3_con","Dim 4_con","
 contribucio_col <- cbind(contribucio_col,names =rownames(contribucio_col))
 #names(contribucio_col)
 
-con <- 6 ##vegades la contribució
+con <- 6 ##vegades la contribuciÃ³
 
 dim1 <- contribucio_col[order(-contribucio_col$`Dim 1_con`),c("Dim 1_con","names")]
 colnames(dim1)<- c("Dim1_con","names_1")
@@ -753,7 +753,7 @@ plot(res.ca, invisible="row",title = "CA Paraules",xlim = c(-1,1),ylim = c(-1.5,
 
 
 plot(res.ca, invisible="row",title = "CA Paraules",xlim = c(-1,1),ylim = c(0.8,1.5),axes = c(3,5))
-## Nom DIM 5 + Avis i prevenció
+## Nom DIM 5 + Avis i prevenciÃ³
 
 plot(res.ca, invisible="row",title = "CA Paraules",xlim = c(-1,1),ylim = c(-1.5,-0.5),axes = c(3,5))
 ## Nom DIM 5 - Rehabilitation
@@ -785,7 +785,7 @@ rm(tdm2)
 ##rm(m)
 ##rm(n)
 
-## Projectes més significatiu a cada dim
+## Projectes mÃ©s significatiu a cada dim
 
 row <- get_ca_row(res.ca)
 contribucio_col <- as.data.frame(row$contrib)
@@ -796,7 +796,7 @@ colnames(contribucio_col) <- c("Dim 1_con","Dim 2_con","Dim 3_con","Dim 4_con","
 contribucio_col <- cbind(contribucio_col,names =rownames(contribucio_col))
 #names(contribucio_col)
 
-con <- 6 ##vegades la contribució
+con <- 6 ##vegades la contribuciÃ³
 
 dim1 <- contribucio_col[order(-contribucio_col$`Dim 1_con`),c("Dim 1_con","names")]
 colnames(dim1)<- c("Dim1_con","names_1")
@@ -1069,13 +1069,13 @@ fviz_cluster(res.hcpc, geom = "point", main = "Factor map")
 table(res.hcpc1$data.clust$clust)
 
 res.hcpc$desc.var$test.chi2 #Estadistic per variable quali
-res.hcpc$desc.axes$quanti.var ## Quina dim ediferencia millor els clústers
+res.hcpc$desc.axes$quanti.var ## Quina dim ediferencia millor els clÃºsters
 
-res.hcpc$desc.axes  # Quina dim més important per cada cluster
+res.hcpc$desc.axes  # Quina dim mÃ©s important per cada cluster
 c6 <- res.hcpc$data$clust
 
 
-### Que explica cada clúster
+### Que explica cada clÃºster
 
 #### 1
 
@@ -1088,7 +1088,7 @@ plot(res.hcpc,ind.names = FALSE, choice = "map",
 n1<-sum(res.hcpc$desc.var$frequency$`1`[,6]>=5)
 head(res.hcpc$desc.var$frequency$`1`,n1) #paraules que descriuen el cluster
 aux_c1 <- as.data.frame(res.hcpc$desc.var$frequency$`1`)
-head(aux_c1[order(aux_c1$`Intern freq`,decreasing  = T),],n1)## paraules mes freqüents en el clúster
+head(aux_c1[order(aux_c1$`Intern freq`,decreasing  = T),],n1)## paraules mes freqÃ¼ents en el clÃºster
 #write.csv2(head(res.hcpc$desc.var$frequency$`1`,n1),"cluster1_paraules.csv")
 
 head(res.hcpc$desc.var$category$`1`,20)#variables qual.categoriques que descriuen el cluster
@@ -1108,7 +1108,7 @@ plot(res.hcpc,ind.names = FALSE, choice = "map",
 n2<-sum(res.hcpc$desc.var$frequency$`2`[,6]>=5)
 head(res.hcpc$desc.var$frequency$`2`,n2) #paraules que descriuen el cluster
 aux_c2 <- as.data.frame(res.hcpc$desc.var$frequency$`2`)
-head(aux_c2[order(aux_c2$`Intern freq`,decreasing  = T),],n2)## paraules mes freqüents en el clúster
+head(aux_c2[order(aux_c2$`Intern freq`,decreasing  = T),],n2)## paraules mes freqÃ¼ents en el clÃºster
 #write.csv2(head(res.hcpc$desc.var$frequency$`2`,n2),"cluster2_paraules.csv")
 
 head(res.hcpc$desc.var$category$`2`,20)#variables qual.categoriques que descriuen el cluster
@@ -1129,7 +1129,7 @@ plot(res.hcpc,ind.names = FALSE, choice = "map",
 n3<-sum(res.hcpc$desc.var$frequency$`3`[,6]>=5)
 head(res.hcpc$desc.var$frequency$`3`,n3) #paraules que descriuen el cluster
 aux_c3 <- as.data.frame(res.hcpc$desc.var$frequency$`3`)
-head(aux_c3[order(aux_c3$`Intern freq`,decreasing  = T),],n3)## paraules mes freqüents en el clúster
+head(aux_c3[order(aux_c3$`Intern freq`,decreasing  = T),],n3)## paraules mes freqÃ¼ents en el clÃºster
 #write.csv2(head(res.hcpc$desc.var$frequency$`3`,n3),"cluster3_paraules.csv")
 
 head(res.hcpc$desc.var$category$`3`,20)#variables qual.categoriques que descriuen el cluster
@@ -1150,7 +1150,7 @@ plot(res.hcpc,ind.names = FALSE, choice = "map",
 n4<-sum(res.hcpc$desc.var$frequency$`4`[,6]>=5)
 head(res.hcpc$desc.var$frequency$`4`,n4) #paraules que descriuen el cluster
 aux_c4 <- as.data.frame(res.hcpc$desc.var$frequency$`4`)
-head(aux_c4[order(aux_c3$`Intern freq`,decreasing  = T),],n3)## paraules mes freqüents en el clúster
+head(aux_c4[order(aux_c3$`Intern freq`,decreasing  = T),],n3)## paraules mes freqÃ¼ents en el clÃºster
 #write.csv2(head(res.hcpc$desc.var$frequency$`4`,n4),"cluster4_paraules.csv")
 
 head(res.hcpc$desc.var$category$`4`,20)#variables qual.categoriques que descriuen el cluster
@@ -1172,7 +1172,7 @@ plot(res.hcpc,ind.names = FALSE, choice = "map",
 n5<-sum(res.hcpc$desc.var$frequency$`5`[,6]>=5)
 head(res.hcpc$desc.var$frequency$`5`,n5) #paraules que descriuen el cluster
 aux_c5 <- as.data.frame(res.hcpc$desc.var$frequency$`5`)
-head(aux_c5[order(aux_c5$`Intern freq`,decreasing  = T),],n5)## paraules mes freqüents en el clúster
+head(aux_c5[order(aux_c5$`Intern freq`,decreasing  = T),],n5)## paraules mes freqÃ¼ents en el clÃºster
 #write.csv2(head(res.hcpc$desc.var$frequency$`5`,n5),"cluster5_paraules.csv")
 
 head(res.hcpc$desc.var$category$`5`,20)#variables qual.categoriques que descriuen el cluster
@@ -1195,7 +1195,7 @@ plot(res.hcpc,ind.names = FALSE, choice = "map",
 n6<-sum(res.hcpc$desc.var$frequency$`6`[,6]>=5)
 head(res.hcpc$desc.var$frequency$`6`,n6) #paraules que descriuen el cluster
 aux_c6 <- as.data.frame(res.hcpc$desc.var$frequency$`6`)
-head(aux_c6[order(aux_c6$`Intern freq`,decreasing  = T),],n6)## paraules mes freqüents en el clúster
+head(aux_c6[order(aux_c6$`Intern freq`,decreasing  = T),],n6)## paraules mes freqÃ¼ents en el clÃºster
 #write.csv2(head(res.hcpc$desc.var$frequency$`6`,n6),"cluster6_paraules.csv")
 
 head(res.hcpc$desc.var$category$`6`,20)#variables qual.categoriques que descriuen el cluster
